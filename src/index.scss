@@ -1,0 +1,20 @@
+// Override default variables before the import
+$body-bg: #000;
+
+// Import Bootstrap and its default variables
+@import "~bootstrap/scss/bootstrap.scss";
+
+@font-face {
+    font-family: Badaboom;
+    src: url(fonts/badaboom.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: SummerVibes;
+    src: url(fonts/summer-vibes.otf) format("opentype");
+}
+
+html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+}

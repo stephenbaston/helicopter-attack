@@ -1,0 +1,30 @@
+.TitleScreen {
+    text-align: center;
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+  
+  .Helicopter {
+    height: 30vmin;
+    pointer-events: none;
+  }
+  
+  .Title {
+    font-family: Badaboom;
+    font-size: calc(10px + 8vmin);
+    letter-spacing: 10px;
+    background: -webkit-linear-gradient(#94ce2a, #265400);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .SubTitle {
+    font-family: SummerVibes;
+    font-size: calc(10px + 2vmin);
+  }
