@@ -58,19 +58,51 @@ class Helicopter extends Actor {
             require(`../images/helicopter/helicopter_f52.png`)
         ];
         this.loadFrames(this.frames);
+        this.friction = 1;
+        this.gravity = 1;
+        this.uplift = 1;
+        this.power = 2;
+        this.velocity.max.x = 30;
         this.velocity.max.y = 20;
+        this.state = {
+            left: false,
+            right: false,
+            climbing: false
+        }
     }
 
     update() {
         super.update();
-    }
-
-    climb() {
-        this.acceleration.y = 1;
-    }
-
-    fall() {
-        this.acceleration.y = -1;
+        if (this.state.left) {
+            if (this.state.right) {
+                if (this.velocity.x > this.friction) {
+                    this.acceleration.x = -this.friction;
+                } else if (this.velocity.x < -this.friction) {
+                    this.acceleration.x = this.friction;
+                } else {
+                    this.acceleration.x = 0;
+                    this.velocity.x = 0;
+                }
+            } else {
+                this.acceleration.x = -this.power;
+            }
+        } else if (this.state.right) {
+            this.acceleration.x = this.power;
+        } else {
+            if (this.velocity.x > this.friction) {
+                this.acceleration.x = -this.friction;
+            } else if (this.velocity.x < -this.friction) {
+                this.acceleration.x = this.friction;
+            } else {
+                this.acceleration.x = 0;
+                this.velocity.x = 0;
+            }
+        }
+        if (this.state.climbing) {
+            this.acceleration.y = this.uplift;
+        } else {
+            this.acceleration.y = -this.gravity;
+        }
     }
 }
 

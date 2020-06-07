@@ -12,13 +12,14 @@ class Engine {
 
     setup = () => {
         this.npcs = [];
+
+        
         this.helicopter = new Helicopter();
         this.helicopter.position.x = this.width / 2;
     }
 
     start = () => {
         this.loop();
-        this.helicopter.fall();
     }
 
     loop = () => {
@@ -45,14 +46,23 @@ class Engine {
     }
 
     keyDown = (event) => {
+        console.log(event.keyCode);
         switch(event.keyCode) {
-            case 32: this.helicopter.climb(); console.log('climbing');
+            case 32: this.helicopter.state.climbing = true; break;
+            case 37:
+            case 65: this.helicopter.state.left = true; break;
+            case 39:
+            case 68: this.helicopter.state.right = true; break;
         }
     }
 
     keyUp = (event) => {
         switch(event.keyCode) {
-            case 32: this.helicopter.fall(); console.log('falling');
+            case 32: this.helicopter.state.climbing = false; break;
+            case 37:
+            case 65: this.helicopter.state.left = false; break;
+            case 39:
+            case 68: this.helicopter.state.right = false; break;
         }
     }
 
